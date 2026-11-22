@@ -20,18 +20,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Prepare site
-        run: |
-          mkdir -p dist
-          unzip -q voxel-wilds-source.zip -d extracted
-          cp -R extracted/voxel-sandbox/. dist/
-          touch dist/.nojekyll
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: .
   deploy:
     environment:
       name: github-pages
